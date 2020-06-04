@@ -1,0 +1,38 @@
+<p>project-table works!</p>
+<button (click)="getProjectList()">Fetch Projects</button>
+
+<div class="container">
+  <table mat-table [dataSource]="projectList" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="partNumber">
+      <th mat-header-cell *matHeaderCellDef>Part Number</th>
+      <td mat-cell *matCellDef="let project">{{project.partNumber}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="partName">
+      <th mat-header-cell *matHeaderCellDef>Part Name (Description)</th>
+      <td mat-cell *matCellDef="let project">{{project.partName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="partRev">
+      <th mat-header-cell *matHeaderCellDef>Part Revision</th>
+      <td mat-cell *matCellDef="let project">{{project.partRev}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="revDate">
+      <th mat-header-cell *matHeaderCellDef>Part Revision</th>
+      <td mat-cell *matCellDef="let project">{{project.projectId}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
+
+<ul>
+  <li *ngFor="let project of projectList">
+    <a routerLink="/project/{{project.projectId}}">{{project.partNumber}}</a>
+  </li>
+</ul>
+

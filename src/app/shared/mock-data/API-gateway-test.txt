@@ -1,0 +1,10 @@
+// This object tests the post request in the project API
+
+{
+    "partNumber": "apiworks",
+    "partRev": "A",
+    "revDate": "1/1/2019",
+    "partName": "the name of the part",
+    "supplier": "supplier",
+    "reasonSubmit": "Correction of Discrepancy"
+}

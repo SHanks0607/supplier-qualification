@@ -1,8 +1,12 @@
-import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
-import { NewProjectFormComponent } from './new-project-form/new-project-form.component';
+import { ProjectComponent } from './project/project.component';
+/// Angular capabilities
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+/// Angular components
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { NewProjectFormComponent } from './new-project-form/new-project-form.component';
+import { ProjectTableComponent } from './project-table/project-table.component';
 
 const routes: Routes = [
   {
@@ -10,6 +14,12 @@ const routes: Routes = [
   },
   {
     path: '', component: SignUpPageComponent
+  },
+  {
+    path: 'project-table', component: ProjectTableComponent
+  },
+  {
+    path: 'project/:id', component: ProjectComponent
   }
 ];
 

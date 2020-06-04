@@ -1,7 +1,7 @@
 import {ProjectReason} from '../models/project-reason-model';
 
 export const PROJECTREASONS: ProjectReason[] = [
-  { id: 1, name: 'initial submission' },
+  { id: 1, name: 'Initial Submission' },
   { id: 2, name: 'Engineering Change(s)' },
   { id: 3, name: 'Tooling: Transfer, Replacement, Refurbishment, or Additional' },
   { id: 4, name: 'Correction of Discrepancy' },

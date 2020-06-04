@@ -1,0 +1,27 @@
+<div class="example-container">
+  <h2>Options</h2>
+
+  <div
+    cdkDropList
+    #optionList="cdkDropList"
+    [cdkDropListData]="options"
+    [cdkDropListConnectedTo]="[requiredList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let option of options" cdkDrag>{{option.name}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Required</h2><button (click)=sortList()>Sort</button>
+
+  <div
+    cdkDropList
+    #requiredList="cdkDropList"
+    [cdkDropListData]="required"
+    [cdkDropListConnectedTo]="[optionList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let required of required" cdkDrag>{{required.name}}</div>
+  </div>
+</div>
