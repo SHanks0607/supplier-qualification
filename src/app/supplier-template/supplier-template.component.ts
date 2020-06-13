@@ -15,11 +15,12 @@ import { Supplier } from '../shared/models/supplier-model';
 export class SupplierTemplateComponent implements OnInit {
   id: number;
   newSupplier: FormGroup;
+  supplierContacts: FormArray;
 
   private storeSub: Subscription;
 
   get supplierContactControls() {
-    return (this.newSupplier.get('contacts') as FormArray).controls;
+    return this.newSupplier.get('supplierContacts')['controls'];
   }
 
   constructor(
@@ -32,11 +33,9 @@ export class SupplierTemplateComponent implements OnInit {
       supplierName: ['', Validators.required],
       supplierStreet: ['', Validators.required],
       supplierCity: ['', Validators.required],
-      supplierContacts: {
-        firstName: ['', Validators.required],
-        lastName: ['', Validators.required],
-        email: ['', Validators.required]
-      }
+      supplierContacts: this.formBuilder.array([
+        this.createContact()
+      ])
     });
   }
 
@@ -46,21 +45,16 @@ export class SupplierTemplateComponent implements OnInit {
 
   }
 
-  onAddContact() {
-    this.supplierContactControls.push(this.newSupplier.value);
+  onAddContact(): void {
+    this.supplierContacts = this.newSupplier.get('supplierContacts') as FormArray;
+    this.supplierContacts.push(this.createContact());
   }
 
-  // private initForm() {
-  //   const supplierName = '';
-  //   const supplierStreet = '';
-  //   const supplierCity = '';
-  //   // const supplierContacts = new FormArray([]);
-
-  //   this.supplierForm = new FormGroup({
-  //     supplierName: new FormControl(supplierName, Validators.required),
-  //     supplierStreet: new FormControl(supplierStreet, Validators.required),
-  //     supplierCity: new FormControl(supplierCity, Validators.required),
-  //     // contacts: supplierContacts
-  //   });
-  // }
+  createContact(): FormGroup {
+    return this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required]
+    });
+  }
 }

@@ -8,10 +8,12 @@
   <button (click)=onSubmit(supplierForm.value)>Save</button>
 
   <div formArrayName="supplierContacts">
-    <div *ngFor="let contactControl of supplierContactControls; let i=index" [formGroupName]="i">
-      <input type="text" class="form-control" formControlName="firstName">
-      <input type="text" class="form-control" formControlName="lastName">
-      <input type="text" class="form-control" formControlName="email">
+    <div *ngFor="let supplierContact of supplierContactControls; let i=index">
+      <div class="form-group" [formGroupName]="i">
+        <input type="text" class="form-control" formControlName="firstName">
+        <input type="text" class="form-control" formControlName="lastName">
+        <input type="text" class="form-control" formControlName="email">
+      </div>
     </div>
     <button type="button" (click)="onAddContact()">Add Contact</button>
   </div>
