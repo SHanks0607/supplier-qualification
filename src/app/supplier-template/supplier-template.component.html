@@ -1,0 +1,18 @@
+<form [formGroup]="newSupplier" #supplierForm="ngForm">
+  <div class="form-group">
+    <input type="text" id="supplierName" formControlName="supplierName" class="form-control">
+    <input type="text" id="supplierStreet" formControlName="supplierStreet" class="form-control">
+    <input type="text" id="supplierCity" formControlName="supplierCity" class="form-control">
+  </div>
+
+  <button (click)=onSubmit(supplierForm.value)>Save</button>
+
+  <div formArrayName="supplierContacts">
+    <div *ngFor="let contactControl of supplierContactControls; let i=index" [formGroupName]="i">
+      <input type="text" class="form-control" formControlName="firstName">
+      <input type="text" class="form-control" formControlName="lastName">
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+    <button type="button" (click)="onAddContact()">Add Contact</button>
+  </div>
+</form>

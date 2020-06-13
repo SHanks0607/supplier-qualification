@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,13 @@ import { ApproveProjectComponent } from './approve-project/approve-project.compo
 import { ExecuteProjectComponent } from './execute-project/execute-project.component';
 import { ApprovedComponent } from './approved/approved.component';
 import { CancelledComponent } from './cancelled/cancelled.component';
+import { SupplierTemplateComponent } from './supplier-template/supplier-template.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+/// App Reducer Import
+import * as fromApp from './store/app.reducer';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -47,7 +55,8 @@ import { CancelledComponent } from './cancelled/cancelled.component';
     ApproveProjectComponent,
     ExecuteProjectComponent,
     ApprovedComponent,
-    CancelledComponent
+    CancelledComponent,
+    SupplierTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +73,10 @@ import { CancelledComponent } from './cancelled/cancelled.component';
     MatNativeDateModule,
     MatTableModule,
     DragDropModule,
-    MatTabsModule
+    MatTabsModule,
+    StoreModule.forRoot(fromApp.appReducer),
+    StoreDevtoolsModule.instrument({logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

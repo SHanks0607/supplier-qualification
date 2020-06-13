@@ -1,3 +1,4 @@
+import { SupplierTemplateComponent } from './supplier-template/supplier-template.component';
 import { ProjectComponent } from './project/project.component';
 /// Angular capabilities
 import { NgModule } from '@angular/core';
@@ -20,6 +21,9 @@ const routes: Routes = [
   },
   {
     path: 'project/:id', component: ProjectComponent
+  },
+  {
+    path: 'suppliers/new', component: SupplierTemplateComponent
   }
 ];
 
