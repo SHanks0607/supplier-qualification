@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +41,7 @@ import { EffectsModule } from '@ngrx/effects';
 /// App Reducer Import
 import * as fromApp from './store/app.reducer';
 import { environment } from 'src/environments/environment';
+import { SupplierEffects } from './supplier-template/store/supplier.effects';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { environment } from 'src/environments/environment';
   ],
   imports: [
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'supplier-qualification'),
+    AngularFireDatabaseModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -76,7 +81,7 @@ import { environment } from 'src/environments/environment';
     MatTabsModule,
     StoreModule.forRoot(fromApp.appReducer),
     StoreDevtoolsModule.instrument({logOnly: environment.production }),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([SupplierEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

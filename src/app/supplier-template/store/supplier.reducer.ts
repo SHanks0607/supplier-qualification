@@ -1,21 +1,21 @@
 import { Supplier } from '../../shared/models/supplier-model';
 import * as SupplierActions from './supplier.actions';
 
-export interface State {
+export interface SuppliersState {
   suppliers: Supplier[];
 }
 
-const initialState: State = {
+const initialState: SuppliersState = {
   suppliers: []
 };
 
 export function supplierReducer(state = initialState, action: SupplierActions.SupplierActions) {
   switch (action.type) {
-    // case SupplierActions.ADD_SUPPLIER:
-    //   return {
-    //     ...state,
-    //     suppliers: [...state.suppliers, action.payload]
-    //   };
+    case SupplierActions.ADD_SUPPLIER:
+      return {
+        ...state,
+        suppliers: [...state.suppliers, action.payload]
+      };
     case SupplierActions.UPDATE_SUPPLIER:
       const updatedSupplier = {
         ...state.suppliers[action.payload.index],
