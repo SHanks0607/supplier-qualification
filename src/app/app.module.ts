@@ -42,6 +42,7 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromApp from './store/app.reducer';
 import { environment } from 'src/environments/environment';
 import { SupplierEffects } from './supplier-template/store/supplier.effects';
+import { SupplierListComponent } from './supplier-list/supplier-list.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { SupplierEffects } from './supplier-template/store/supplier.effects';
     ExecuteProjectComponent,
     ApprovedComponent,
     CancelledComponent,
-    SupplierTemplateComponent
+    SupplierTemplateComponent,
+    SupplierListComponent
   ],
   imports: [
     BrowserModule,

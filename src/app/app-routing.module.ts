@@ -1,3 +1,4 @@
+import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import { SupplierTemplateComponent } from './supplier-template/supplier-template.component';
 import { ProjectComponent } from './project/project.component';
 /// Angular capabilities
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'suppliers/new', component: SupplierTemplateComponent
+  },
+  {
+    path: 'suppliers/list', component: SupplierListComponent
   }
 ];
 

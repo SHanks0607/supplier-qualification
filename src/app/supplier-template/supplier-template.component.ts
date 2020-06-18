@@ -1,3 +1,4 @@
+import { AdminService } from './../admin.service';
 import { SupplierContact } from './../shared/models/supplier-model';
 import * as SupplierActions from './store/supplier.actions';
 import { Component, OnInit } from '@angular/core';
@@ -25,7 +26,8 @@ export class SupplierTemplateComponent implements OnInit {
 
   constructor(
     private store: Store<fromApp.AppState>,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private supplierService: AdminService
   ) { }
 
   ngOnInit() {
@@ -39,9 +41,10 @@ export class SupplierTemplateComponent implements OnInit {
     });
   }
 
-  onSubmit(newSupplier: Supplier) {
+  onSubmit(newSupplier: Supplier[]) {
     console.log(this.newSupplier.value);
-    this.store.dispatch(new SupplierActions.AddSupplier(this.newSupplier.value));
+    // this.store.dispatch(new SupplierActions.AddSupplier(this.newSupplier.value));
+    this.supplierService.addSupplier(newSupplier);
 
   }
 
@@ -56,5 +59,9 @@ export class SupplierTemplateComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', Validators.required]
     });
+  }
+
+  onDeleteSupplier() {
+    this.store.dispatch(new SupplierActions.DeleteSupplier(this.newSupplier.value));
   }
 }

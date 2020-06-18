@@ -6,6 +6,7 @@
   </div>
 
   <button (click)=onSubmit(supplierForm.value)>Save</button>
+  <button (click)=onDeleteSupplier()>Delete</button>
 
   <div formArrayName="supplierContacts">
     <div *ngFor="let supplierContact of supplierContactControls; let i=index">
